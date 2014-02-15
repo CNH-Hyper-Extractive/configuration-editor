@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Oatc.OpenMI.Gui.Controls</name>
+    </assembly>
+    <members>
+        <member name="T:Oatc.OpenMI.Gui.ConfigurationEditor.ElementSetViewer">
+            <summary>
+            Window for ElementSetViewer tool.
+            </summary>
+        </member>
+        <member name="F:Oatc.OpenMI.Gui.ConfigurationEditor.ElementSetViewer.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.ConfigurationEditor.ElementSetViewer.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Oatc.OpenMI.Gui.ConfigurationEditor.ElementSetViewer">ElementSetViewer</see> dialog.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.ConfigurationEditor.ElementSetViewer.PopulateDialog(System.Collections.ArrayList)">
+            <summary>
+            Populates dialog with element sets.
+            </summary>
+            <param name="elementSets"><see cref="T:System.Collections.ArrayList">ArrayList</see> of element sets, ie. 
+            <see cref="T:OpenMI.Standard.IElementSet">IElementSet</see> objects.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.ConfigurationEditor.ElementSetViewer.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.ConfigurationEditor.ElementSetViewer.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector">
+            <summary>
+            This control represents tree of exchange items. First level nodes represent
+            <see cref="T:OpenMI.Standard.IQuantity">IQuantity</see>, second level nodes represent 
+            <see cref="T:OpenMI.Standard.IElementSet">IElementSet</see> and 
+            third level nodes represent <see cref="T:OpenMI.Standard.IDataOperation">IDataOperation</see>s in case of 
+            <see cref="T:OpenMI.Standard.IOutputExchangeItem">IOutputExchangeItem</see>s.
+            </summary>	
+        </member>
+        <member name="F:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector._exchangeItemsSearcher">
+            <summary>
+            Hashtable used to find exchange item corresponding to quantity and element set.
+            As key we use strign created with method <see cref="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.CreateExchangeItemID(OpenMI.Standard.IQuantity,OpenMI.Standard.IElementSet)">CreateExchangeItemID</see>.
+            The value is IExchangeItem, if there's no other exchange item with same key,
+            if yes, value is ArrayList of such exchange items.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector">ExchangeItemSelector</see> control.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.PopulateExchangeItemTree(OpenMI.Standard.IExchangeItem[],System.Boolean)">
+            <summary>
+            Populates this control with exchange items.
+            </summary>
+            <param name="exchangeItems">Exchange items.</param>
+            <param name="showCheckboxes">Determines whether to show check-boxes in the tree.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.CreateTree">
+            <summary>
+            Creates the tree based on element sets and quantities in exchange items
+            passed with <see cref="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.PopulateExchangeItemTree(OpenMI.Standard.IExchangeItem[],System.Boolean)">PopulateExchangeItemTree</see> method.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.SetCheckedExchangeItem(OpenMI.Standard.IQuantity,OpenMI.Standard.IElementSet,OpenMI.Standard.IDataOperation[])">
+            <summary>
+            Sets which one Quantity, one ElementSet and some DataOperations are currently checked.
+            </summary>
+            <param name="elementSet">ElementSet</param>
+            <param name="quantity">Quantity</param>
+            <param name="selectedDataOperations">Array of DataOperations which will be checked. If null no one will be checked.</param>.
+            <remarks>Only one Quantity and one ElementSet can be checked at the time. DataOperations
+            corresponding to Quantity->ElementSet exchange item can be checked as needed,
+            all other cannot be checked.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.GetCheckedExchangeItem(OpenMI.Standard.IQuantity@,OpenMI.Standard.IElementSet@,OpenMI.Standard.IDataOperation[]@)">
+            <summary>
+            Gets nodes of tree that are currently checked.
+            </summary>
+            <param name="quantity">Currently checked quantity or <c>null</c> if not checked.</param>
+            <param name="elementSet">Currently checked elementSet or <c>null</c> if not checked.</param>
+            <param name="selectedDataOperations">Currently checked data operations or <c>null</c> if no checked.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.GetExchangeItem(OpenMI.Standard.IQuantity,OpenMI.Standard.IElementSet)">
+            <summary>
+            Gets <see cref="T:OpenMI.Standard.IExchangeItem">IExchangeItem</see> corresponding to <c>quantity</c> and <c>elementSet</c>.
+            </summary>
+            <param name="quantity">Quantity of this exchange item.</param>
+            <param name="elementSet">ElementSet of this exchange item.</param>
+            <returns>Returns corresponding exchange item or <c>null</c> if not found.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.GetSelectedObject">
+            <summary>
+            Gets object corresponding to currently selected node.
+            </summary>
+            <returns>Returns IOutputExchangeItem, IInputExchangeItem, IDataOperation or <c>null</c> if no node is selected.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.ExpandChecked">
+            <summary>
+            Expands the node of the tree which is currently checked.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.ClearCheckboxes">
+            <summary>
+            Sets check-state of all checkboxes in tree to unchecked.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.EnableDimensionFilter(OpenMI.Standard.IDimension)">
+            <summary>
+            Enables or disables Dimension filter.
+            </summary>
+            <param name="filterDimension">New Dimension filter or <c>null</c> if no filter should be used.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.EnableElementSetFilter(OpenMI.Standard.IElementSet)">
+            <summary>
+            Enables or disables ElementSet filter.
+            </summary>
+            <param name="filterElementSet">New ElementSet filter or <c>null</c> if no filter should be used.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="E:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.SelectionChanged">
+            <summary>
+            Occurs when the selection of tree node changes.
+            </summary>
+        </member>
+        <member name="E:Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.CheckboxesChanged">
+            <summary>
+            Occurs when the check-state of checkboxes in the tree changes.
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Controls.PropertyManager">
+            <summary>
+            This class is used to hold pairs of <c>string</c> key-value pairs.
+            These pairs are than published like typical .NET class properties (ie. { get; set; } ) 
+            using overrides of <see cref="T:System.ComponentModel.ICustomTypeDescriptor">ICustomTypeDescriptor</see>
+            methods.
+            Main goal of this class is to be able to modify properties shown in
+            <see cref="T:System.Windows.Forms.PropertyGrid">PropertyGrid</see>
+            in run-time.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.PropertyManager.#ctor">
+            <summary>
+            Creates a new instance if <see cref="T:Oatc.OpenMI.Gui.Controls.PropertyManager">PropertyManager</see> class.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.PropertyManager.SetProperty(System.String,System.String,System.Boolean)">
+            <summary>
+            Creates new or sets existing property of this instance.
+            </summary>
+            <param name="Name">Name of the property.</param>
+            <param name="Value">Value of the property.</param>
+            <param name="ReadOnly">Determines whether the property is read-only.</param>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.PropertyManager.SetProperty(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            Creates new or sets existing property of this instance.
+            </summary>
+            <param name="Name">Name of the property.</param>
+            <param name="Value">Value of the property.</param>
+            <param name="ReadOnly">Determines whether the property is read-only.</param>
+            <param name="Description">Description of the property or <c>null</c> if no description is needed.</param>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.PropertyManager.SetProperty(System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Creates new or sets existing property of this instance.
+            </summary>
+            <param name="Name">Name of the property.</param>
+            <param name="Value">Value of the property.</param>
+            <param name="ReadOnly">Determines whether the property is read-only.</param>
+            <param name="Description">Description of the property or <c>null</c> if no description is needed.</param>
+            <param name="Category">Category of the property or <c>null</c> if no category is needed.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.PropertyManager.GetProperty(System.String)">
+            <summary>
+            Gets value of some property.
+            </summary>
+            <param name="Name">Name of the property.</param>
+            <returns>Returns value of the property.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.PropertyManager.RemoveProperty(System.String)">
+            <summary>
+            Removes property from this instance.
+            </summary>
+            <param name="Name">Name of the property to be removed.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Controls.PropertyManager.ConstructPropertyManager(System.Object,System.Boolean)">
+            <summary>
+            Constructs a new <see cref="T:Oatc.OpenMI.Gui.Controls.PropertyManager">PropertyManager</see> from <c>object</c>
+            of known type.
+            </summary>
+            <param name="obj">Object of known type.</param>
+            <param name="allReadOnly">If true, all properties are readonly.</param>
+            <returns>Returns new <see cref="T:Oatc.OpenMI.Gui.Controls.PropertyManager">PropertyManager</see>
+            or <c>null</c> if object's type isn't known.</returns>
+            <remarks>A this time this method knowns following types:
+            <list>
+            <item><see cref="T:OpenMI.Standard.IQuantity">IQuantity</see></item>
+            <item><see cref="T:OpenMI.Standard.IElementSet">IElementSet</see></item>
+            <item><see cref="T:OpenMI.Standard.IDataOperation">IDataOperation</see></item>
+            <item><see cref="T:OpenMI.Standard.ILinkableComponent">ILinkableComponent</see></item>
+            </list>
+            Method saves <c>obj</c> parameter to <see cref="P:Oatc.OpenMI.Gui.Controls.PropertyManager.Tag">Tag</see> property, but you can
+            use it for any purpose.
+            </remarks>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Controls.PropertyManager.Tag">
+            <summary>
+            Gets or sets custom user object.
+            </summary>
+            <remarks>
+            This object can be used by the user for any purpose and all non-static methods of this class
+            ignores it.
+            Static method <see cref="M:Oatc.OpenMI.Gui.Controls.PropertyManager.ConstructPropertyManager(System.Object,System.Boolean)">ConstructPropertyManager</see> sets 
+            new value into it.
+            </remarks>
+        </member>
+    </members>
+</doc>

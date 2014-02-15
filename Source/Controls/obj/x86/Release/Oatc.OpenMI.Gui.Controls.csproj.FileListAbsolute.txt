@@ -1,0 +1,12 @@
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\bin\x86\Release\Oatc.OpenMI.Gui.Controls.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\bin\x86\Release\org.OpenMI.Tools.GUI.Controls.XML
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\bin\x86\Release\Oatc.OpenMI.Gui.Core.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\bin\x86\Release\Oatc.OpenMI.Sdk.Backbone.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\bin\x86\Release\Oatc.OpenMI.Sdk.DevelopmentSupport.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\bin\x86\Release\Oatc.OpenMI.Sdk.Spatial.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\bin\x86\Release\OpenMI.Standard.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\obj\x86\Release\Oatc.OpenMI.Gui.Controls.csprojResolveAssemblyReference.cache
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\obj\x86\Release\Oatc.OpenMI.Gui.ConfigurationEditor.ElementSetViewer.resources
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\obj\x86\Release\Oatc.OpenMI.Gui.Controls.ExchangeItemSelector.resources
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\obj\x86\Release\Oatc.OpenMI.Gui.Controls.csproj.GenerateResource.Cache
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Controls\obj\x86\Release\Oatc.OpenMI.Gui.Controls.dll

@@ -1,0 +1,1071 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Oatc.OpenMI.Gui.Core</name>
+    </assembly>
+    <members>
+        <member name="T:Oatc.OpenMI.Gui.Core.AssemblySupport">
+            <summary>
+            This class is globaly used to manage assemblies.
+            </summary>
+        </member>
+        <member name="F:Oatc.OpenMI.Gui.Core.AssemblySupport._assemblies">
+            <summary>
+            Internal list of assemblies.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.AssemblySupport.LoadAssembly(System.String,System.String)">
+            <summary>
+            Loads specific assembly into internal list of assemblies.
+            </summary>
+            <param name="directory">Directory <c>filename</c> is relative to, or <c>null</c> if <c>filename</c> is absolute or relative to current directory.</param>
+            <param name="filename">Relative or absolute path to assembly.</param>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.Utils.GetFileInfo(System.String,System.String)">Utils.GetFileInfo</see> for more info about how
+            specified file is searched. If file isn't found, method tries to
+            load assembly from global assembly cache (GAC).</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.AssemblySupport.GetNewInstance(System.String)">
+            <summary>
+            Creates new instance of type contained in one previously loaded assembly, or from application context if 
+            not found.
+            </summary>
+            <param name="typeName">Name of the type</param>
+            <returns>Returns new instance of specified type.</returns>
+            <remarks>New instance is created with default parameterless constructor,
+            if such constructor doesn't exists an exception is thrown.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.AssemblySupport.ReleaseAll">
+            <summary>
+            Releases all assemblies from internal list.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.AssemblySupport.#cctor">
+            <summary>
+            Initializes internal list of assemblies.
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.AssemblySupport.AssemblyItem">
+            <summary>
+            One element of internal list of assemblies
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.CompositionManager">
+            <summary>
+            Summary description for CompositionManager.
+            </summary>
+        </member>
+        <member name="F:Oatc.OpenMI.Gui.Core.CompositionManager.TriggerModelID">
+            <summary>
+            Unique ID of trigger "model".
+            </summary>
+            <remarks>Standard models cannot have this ID.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.#ctor">
+            <summary>
+            Creates a new empty instance of <c>CompositionManager</c> class.
+            </summary>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.Initialize">Initialize</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.Initialize">
+            <summary>
+            Initializes this composition.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.Release">
+            <summary>
+            Releases all models and intializes this composition.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.AddModel(System.String,System.String)">
+            <summary>
+            Adds new model to this composition.
+            </summary>
+            <param name="omiFilename">Relative or absolute path to OMI file describing the model.</param>
+            <param name="directory">Directory <c>omiFilename</c> is relative to, or <c>null</c> if <c>omiFilename</c> is absolute or relative to current directory.</param>
+            <returns>Returns newly added model.</returns>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.Utils.GetFileInfo(System.String,System.String)">Utils.GetFileInfo</see> for more info about how
+            specified file is searched.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.RemoveModel(Oatc.OpenMI.Gui.Core.UIModel)">
+            <summary>
+            Removes specified model from composition.
+            </summary>
+            <param name="model">Model to be removed.</param>
+            <remarks>The <c>Dispose</c> method is called on the model.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.RemoveAllModels">
+            <summary>
+            Removes all model from composition.
+            </summary>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.RemoveModel(Oatc.OpenMI.Gui.Core.UIModel)">RemoveModel</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.AddConnection(Oatc.OpenMI.Gui.Core.UIModel,Oatc.OpenMI.Gui.Core.UIModel)">
+            <summary>
+            Creates new connection between two models in composition.
+            </summary>
+            <param name="providingModel">Source model</param>
+            <param name="acceptingModel">Target model</param>
+            <remarks>Connection between two models is just abstraction which can hold links between models.
+            The direction of connection and its links is same. There can be only one connection between two models.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.RemoveConnection(Oatc.OpenMI.Gui.Core.UIConnection)">
+            <summary>
+            Removes connection between two models.
+            </summary>
+            <param name="connection">Connection to be removed.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.HasTrigger">
+            <summary>
+            Determines whether composition has trigger.
+            </summary>
+            <returns>Returns <c>true</c> if composition has trigger, otherwise returns <c>false</c>.</returns>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.GetTrigger">GetTrigger</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.GetTrigger">
+            <summary>
+            Gets trigger "model".
+            </summary>
+            <returns>Returns trigger, or <c>null</c> if composition has no trigger.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.SaveToFile(System.String)">
+            <summary>
+            Saves composition to OmiEd Project XML file (OPR).
+            </summary>
+            <param name="filePath">Path to OPR file.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.LoadFromFile(System.String)">
+            <summary>
+            Loads composition from OmiEd Project XML file (OPR).
+            </summary>
+            <param name="filePath">Path to OPR file.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.Reload">
+            <summary>
+            Reloads the composition.
+            </summary>
+            <remarks>Reloading is useful if you want to run simulation multiple times in one execution time.
+            Some models aren't able to run simulation after it was already run, and may crash in such case.
+            That's because they need to create new instance of them, on which the <c>Initialize</c> method
+            is called. 
+            Reloading is done same way like when you save the composition to OPR file, restarts the application,
+            and open this OPR file again. Of course, it is done only internally in the memory.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.GetSimulationTimehorizon">
+            <summary>
+            Calculates time horizon of the simulation,
+            ie. time between earliest model start and latest model end.
+            </summary>
+            <returns>Returns simulation time horizon.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.Run(OpenMI.Standard.IListener,System.Boolean)">
+            <summary>
+            Runs simulation.
+            </summary>
+            <param name="runListener">Simulation listener.</param>
+            <param name="runInSameThread">If <c>true</c>, simulation is run in same thread like caller,
+            ie. method blocks until simulation don't finish. If <c>false</c>, simulation is
+            run in separate thread and method returns immediately.</param>
+            <remarks>
+            Simulation is run the way that trigger invokes <see cref="M:OpenMI.Standard.ILinkableComponent.GetValues(OpenMI.Standard.ITime,System.String)">ILinkableComponent.GetValues</see>
+            method of the model it's connected to
+            at the time specified by <see cref="P:Oatc.OpenMI.Gui.Core.CompositionManager.TriggerInvokeTime">TriggerInvokeTime</see> property.
+            If you need to use more than one listener you can use <see cref="T:Oatc.OpenMI.Gui.Core.ProxyListener">ProxyListener</see>
+            class or <see cref="T:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener">ProxyMultiThreadListener</see> if <c>runInSameThread</c> is <c>false</c>.
+            </remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.Stop">
+            <summary>
+            Stops the simulation.
+            </summary>
+            <remarks>This method has effect only if simulation is run in separate thread
+            (see <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.Run(OpenMI.Standard.IListener,System.Boolean)">Run</see> method).
+            This method calls <see cref="M:System.Threading.Thread.Abort">Abort</see> method on the simulation thread.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.SaveToXmlDocument(System.Xml.XmlDocument)">
+            <summary>
+            Saves composition to XML document.
+            </summary>
+            <param name="xmlDocument">XML document</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.LoadFromXmlDocument(System.String,System.Xml.XmlDocument)">
+            <summary>
+            Loads composition from XML document.
+            </summary>
+            <param name="omiRelativeDirectory">Directory the OMI files are relative to.</param>
+            <param name="xmlDocument">XML document</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.CompositionManager.RunThreadFunction">
+            <summary>
+            This method is called in <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.Run(OpenMI.Standard.IListener,System.Boolean)">Run</see> method.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.SimulationFinishedEvent">
+            <summary>
+            Special event saying that simulation has finished.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.SimulationFailedEvent">
+            <summary>
+            Special event saying that simulation has failed.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.Models">
+            <summary>
+            Gets list of all models (ie. instances of <see cref="T:Oatc.OpenMI.Gui.Core.UIModel">UIModel</see> class) in composition.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.Connections">
+            <summary>
+            Gets list of all connections (ie. instances of <see cref="T:Oatc.OpenMI.Gui.Core.UIConnection">UIConnection</see> class) in composition.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.ListenedEventTypes">
+            <summary>
+            Gets array of <c>bool</c> describing which events should be listened during simulation run.
+            </summary>
+            <remarks>Array has <see cref="F:OpenMI.Standard.EventType.NUM_OF_EVENT_TYPES">EventType.NUM_OF_EVENT_TYPES</see>
+            elements. See <see cref="T:OpenMI.Standard.EventType">EventType</see>, <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.Run(OpenMI.Standard.IListener,System.Boolean)">Run</see> for more detail.
+            </remarks>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.TriggerInvokeTime">
+            <summary>
+            Time when trigger should be invoked.
+            </summary>
+            <remarks>See <see cref="T:OpenMI.Standard.EventType">EventType</see> and <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.Run(OpenMI.Standard.IListener,System.Boolean)">Run</see> for more detail.</remarks>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.LogToFile">
+            <summary>
+            Relative or absolute path to text file for logging simulation run.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.RunInSameThread">
+            <summary>
+            Gets or sets whether simulation should be run in same thread. By default it's <c>false</c>.
+            </summary>
+            <remarks>
+            This is only recommendation of composition author, you can override
+            this setting while calling <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.Run(OpenMI.Standard.IListener,System.Boolean)">Run</see> method. For example
+            if running from console, simulation is always executed in same thread.
+            </remarks>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.ShowEventsInListbox">
+            <summary>
+            Gets or sets whether events should be showed in list-box during simulation in UI.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.CompositionManager.ShouldBeSaved">
+            <summary>
+            Gets or sets wheather composition was changed and should be saved to OPR file.
+            </summary>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.SaveToFile(System.String)">SaveToFile</see>.</remarks>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.LogFileListener">
+            <summary>
+            Listener used to log simulation progress to text file.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.LogFileListener.#ctor">
+            <summary>
+            Creates new instance of <see cref="T:Oatc.OpenMI.Gui.Core.LogFileListener">LogFileListener</see> which doesn't listen any
+            event type. 
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.LogFileListener.#ctor(System.Boolean[],System.String)">
+            <summary>
+            Creates new instance of <see cref="T:Oatc.OpenMI.Gui.Core.LogFileListener">LogFileListener</see>.
+            </summary>
+            <param name="listenedEvents">Listened event types.</param>
+            <param name="filename">Path to text file for logging.</param>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.LogFileListener.Initialize(System.Boolean[],System.String)">Initialize</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.LogFileListener.Finalize">
+            <summary>
+            Closes text file for logging, if any.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.LogFileListener.Initialize(System.Boolean[],System.String)">
+            <summary>
+            Initializes this listener to log events to text file.
+            </summary>
+            <param name="listenedEvents"><c>bool</c> array describing which event types should be listened.</param>
+            <param name="filename">Path to text file for logging.</param>
+            <remarks><c>listenedEvents</c> must have exactly
+            <see cref="F:OpenMI.Standard.EventType.NUM_OF_EVENT_TYPES">EventType.NUM_OF_EVENT_TYPES</see> elements.
+            See <see cref="T:OpenMI.Standard.EventType">EventType</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.LogFileListener.GetAcceptedEventType(System.Int32)">
+            <summary>
+            Get accepted event type.
+            </summary>
+            <param name="acceptedEventTypeIndex">Index of accepted event type.</param>
+            <returns>Returns accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventType(System.Int32)">IListener.GetAcceptedEventType</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.LogFileListener.GetAcceptedEventTypeCount">
+            <summary>
+            Get accepted event type count.
+            </summary>
+            <returns>Returns number of accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventTypeCount">IListener.GetAcceptedEventTypeCount</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.LogFileListener.OnEvent(OpenMI.Standard.IEvent)">
+            <summary>
+            Logs one event to text file.
+            </summary>
+            <param name="Event">Event to be logged.</param>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.OnEvent(OpenMI.Standard.IEvent)">IListener.OnEvent</see>
+            for more detail.</remarks>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.ListViewListener">
+            <summary>
+            Listener used to show simulation progress in <see cref="T:System.Windows.Forms.ListView">ListView</see> control.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ListViewListener.#ctor">
+            <summary>
+            Creates new instance of <see cref="T:Oatc.OpenMI.Gui.Core.ListViewListener">ListViewListener</see> which doesn't listen any
+            event type. 
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ListViewListener.#ctor(System.Boolean[],System.Windows.Forms.ListView,System.UInt32)">
+            <summary>
+            Creates new instance of <see cref="T:Oatc.OpenMI.Gui.Core.ListViewListener">ListViewListener</see>.
+            </summary>
+            <param name="listenedEvents">Listened event types.</param>
+            <param name="listView">List-view where event should be added.</param>		
+            <param name="maxListViewItems">Maximum number of records in list-view.</param>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.ListViewListener.Initialize(System.Boolean[],System.Windows.Forms.ListView,System.UInt32)">Initialize</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ListViewListener.Initialize(System.Boolean[],System.Windows.Forms.ListView,System.UInt32)">
+            <summary>
+            Initializes this listener to log events to list-box.
+            </summary>
+            <param name="listenedEvents"><c>bool</c> array describing which event types should be listened.</param>
+            <param name="listView">List-view where event should be added.</param>		
+            <param name="maxListViewItems">Maximum number of records in list-view. Negative value means infinity.</param>
+            <remarks><c>listenedEvents</c> must have exactly
+            <see cref="F:OpenMI.Standard.EventType.NUM_OF_EVENT_TYPES">EventType.NUM_OF_EVENT_TYPES</see> elements.
+            See <see cref="T:OpenMI.Standard.EventType">EventType</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ListViewListener.GetAcceptedEventType(System.Int32)">
+            <summary>
+            Get accepted event type.
+            </summary>
+            <param name="acceptedEventTypeIndex">Index of accepted event type.</param>
+            <returns>Returns accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventType(System.Int32)">IListener.GetAcceptedEventType</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ListViewListener.GetAcceptedEventTypeCount">
+            <summary>
+            Get accepted event type count.
+            </summary>
+            <returns>Returns number of accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventTypeCount">IListener.GetAcceptedEventTypeCount</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ListViewListener.OnEvent(OpenMI.Standard.IEvent)">
+            <summary>
+            Adds one event to list-box.
+            </summary>
+            <param name="Event">Event to be added.</param>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.OnEvent(OpenMI.Standard.IEvent)">IListener.OnEvent</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ListViewListener.AddQueuedEvents(System.Collections.Queue)">
+            <summary>
+            Method adds events from queue to listbox.
+            </summary>
+            <param name="queue">Queue with events (i.e. <see cref="T:OpenMI.Standard.IEvent">IEvent</see> instances)</param>
+            <returns>If one event is
+            <see cref="P:Oatc.OpenMI.Gui.Core.CompositionManager.SimulationFinishedEvent">SimulationFinishedEvent</see>
+            or <see cref="P:Oatc.OpenMI.Gui.Core.CompositionManager.SimulationFailedEvent">SimulationFailedEvent</see>,
+            return <c>true</c>, that means the simulation has finished.
+            Returns <c>false</c> otherwise.
+            </returns>
+            <remarks>
+            This method should be used instead of standard <see cref="M:Oatc.OpenMI.Gui.Core.ListViewListener.OnEvent(OpenMI.Standard.IEvent)">OnEvent</see>
+            method in case there are more events to add. That's because using standard method
+            list-box is repainted once with every item added and there can be
+            much more items than list-box can even hold, but they all are added and later removed.
+            You can see this is very unefficient. This method performs
+            all operations much more effectively and repaints list-box only once.
+            </remarks>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.ConsoleListener">
+            <summary>
+            Listener used to write events to console.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ConsoleListener.#ctor">
+            <summary>
+            Creates new instance of <see cref="T:Oatc.OpenMI.Gui.Core.ConsoleListener">ConsoleListener</see> which doesn't listen any
+            event type. 
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ConsoleListener.#ctor(System.Boolean[])">
+            <summary>
+            Creates new instance of <see cref="T:Oatc.OpenMI.Gui.Core.ConsoleListener">ConsoleListener</see>.
+            </summary>
+            <param name="listenedEvents">Listened event types.</param>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.ConsoleListener.Initialize(System.Boolean[])">Initialize</see> for more detail.</remarks>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ConsoleListener.Initialize(System.Boolean[])">
+            <summary>
+            Initializes this listener to write events to console.
+            </summary>
+            <param name="listenedEvents"><c>bool</c> array describing which event types should be listened.</param>
+            <remarks><c>listenedEvents</c> must have exactly
+            <see cref="F:OpenMI.Standard.EventType.NUM_OF_EVENT_TYPES">EventType.NUM_OF_EVENT_TYPES</see> elements.
+            See <see cref="T:OpenMI.Standard.EventType">EventType</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ConsoleListener.GetAcceptedEventType(System.Int32)">
+            <summary>
+            Get accepted event type.
+            </summary>
+            <param name="acceptedEventTypeIndex">Index of accepted event type.</param>
+            <returns>Returns accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventType(System.Int32)">IListener.GetAcceptedEventType</see>
+            for more detail.</remarks>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ConsoleListener.GetAcceptedEventTypeCount">
+            <summary>
+            Get accepted event type count.
+            </summary>
+            <returns>Returns number of accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventTypeCount">IListener.GetAcceptedEventTypeCount</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ConsoleListener.OnEvent(OpenMI.Standard.IEvent)">
+            <summary>
+            Writes one event to console.
+            </summary>
+            <param name="Event">Event to write.</param>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.OnEvent(OpenMI.Standard.IEvent)">IListener.OnEvent</see>
+            for more detail.</remarks>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.ProgressBarListener">
+            <summary>
+            Listener used to show simulation progress in progress bar.
+            </summary>
+            <remarks>
+            This listener accepts all events, the only thing which reads from
+            them is the sender model's simulation time.
+            See <see cref="M:Oatc.OpenMI.Gui.Core.ProgressBarListener.OnEvent(OpenMI.Standard.IEvent)">OnEvent</see>, <see cref="M:Oatc.OpenMI.Gui.Core.ProgressBarListener.Initialize(OpenMI.Standard.ITimeSpan,System.Windows.Forms.ProgressBar)">Initialize</see>
+            for more details.
+            </remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProgressBarListener.#ctor(OpenMI.Standard.ITimeSpan,System.Windows.Forms.ProgressBar)">
+            <summary>
+            Creates a new instance of <see cref="T:Oatc.OpenMI.Gui.Core.ProgressBarListener">ProgressBarListener</see> class.
+            </summary>
+            <param name="simulationTimeHorizon">Time horizon of whole simulation.</param>
+            <param name="progressBar">Progress bar.</param>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.ProgressBarListener.Initialize(OpenMI.Standard.ITimeSpan,System.Windows.Forms.ProgressBar)">Initialize</see>
+            for more details.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProgressBarListener.Initialize(OpenMI.Standard.ITimeSpan,System.Windows.Forms.ProgressBar)">
+            <summary>
+            Initializes this listener to show progress of simulation using events.
+            </summary>
+            <param name="simulationTimeHorizon">Time horizon of whole simulation.</param>
+            <param name="progressBar">Progress bar where simulation progress will be shown.</param>
+            <remarks>Typically <c>simulationTimeHorizon</c> is defined as time from earliest model start
+            to latest model end.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProgressBarListener.GetAcceptedEventType(System.Int32)">
+            <summary>
+            Get accepted event type.
+            </summary>
+            <param name="acceptedEventTypeIndex">Index of accepted event type.</param>
+            <returns>Returns accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventType(System.Int32)">IListener.GetAcceptedEventType</see>
+            for more detail.</remarks>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProgressBarListener.GetAcceptedEventTypeCount">
+            <summary>
+            Get accepted event type count.
+            </summary>
+            <returns>Returns number of accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventTypeCount">IListener.GetAcceptedEventTypeCount</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProgressBarListener.OnEvent(OpenMI.Standard.IEvent)">
+            <summary>
+            Advances progress-bar if possible.
+            </summary>
+            <param name="Event">Event from which sender model's simulation time is read.</param>
+            <remarks>
+            If <c>Event</c> is
+            <see cref="P:Oatc.OpenMI.Gui.Core.CompositionManager.SimulationFinishedEvent">CompositionManager.SimulationFinishedEvent</see>
+            or <see cref="P:Oatc.OpenMI.Gui.Core.CompositionManager.SimulationFailedEvent">CompositionManager.SimulationFailedEvent</see>,
+            the progress bar value is set to maximum and progress bar is disabled. This way the window
+            hosting progress bar determines that simulation finished.
+            See <see cref="M:OpenMI.Standard.IListener.OnEvent(OpenMI.Standard.IEvent)">IListener.OnEvent</see>
+            for more detail.</remarks>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.DoEventsListener">
+            <summary>
+            Listener used to call <see cref="M:System.Windows.Forms.Application.DoEvents">Application.DoEvents</see> method
+            periodically.
+            </summary>
+            <remarks>This listener is typically used when simulation runs in same thread as GUI to be able
+            to redraw window, etc</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.DoEventsListener.#ctor(System.UInt32)">
+            <summary>
+            Creates new instance of <see cref="T:Oatc.OpenMI.Gui.Core.DoEventsListener">DoEventsListener</see> class.
+            </summary>
+            <param name="minDoEventsInterval">Minimum interval between <see cref="M:System.Windows.Forms.Application.DoEvents">Application.DoEvents</see> call in miliseconds.</param>
+            <remarks>
+            See <see cref="M:Oatc.OpenMI.Gui.Core.DoEventsListener.Initialize(System.UInt32)">Initialize</see> for more details.
+            </remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.DoEventsListener.Initialize(System.UInt32)">
+            <summary>
+            Initializes this <see cref="T:Oatc.OpenMI.Gui.Core.DoEventsListener">DoEventsListener</see>.
+            </summary>
+            <param name="minDoEventsInterval">Minimum interval between <see cref="M:System.Windows.Forms.Application.DoEvents">Application.DoEvents</see> call in miliseconds.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.DoEventsListener.GetAcceptedEventType(System.Int32)">
+            <summary>
+            Get accepted event type.
+            </summary>
+            <param name="acceptedEventTypeIndex">Index of accepted event type.</param>
+            <returns>Returns accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventType(System.Int32)">IListener.GetAcceptedEventType</see>
+            for more detail.</remarks>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.DoEventsListener.GetAcceptedEventTypeCount">
+            <summary>
+            Get accepted event type count.
+            </summary>
+            <returns>Returns number of accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventTypeCount">IListener.GetAcceptedEventTypeCount</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.DoEventsListener.OnEvent(OpenMI.Standard.IEvent)">
+            <summary>
+            Makes <c>Application.DoEvents</c> call if time elapsed since the last call exceeds minimum interval.
+            </summary>
+            <param name="Event">Event, isn't used anyway.</param>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.DoEventsListener.Initialize(System.UInt32)">Initialize</see>, <see cref="M:OpenMI.Standard.IListener.OnEvent(OpenMI.Standard.IEvent)">IListener.OnEvent</see>
+            for more detail.</remarks>		
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.ProxyListener">
+            <summary>
+            Simulation listener used to forward events to other listeners. 
+            </summary>
+            <remarks>
+            <see cref="M:Oatc.OpenMI.Gui.Core.CompositionManager.Run(OpenMI.Standard.IListener,System.Boolean)">CompositionManager.Run</see> allows
+            only one listener to monitor the simulation, if you need more than one listener,
+            you can use this class. This class should be used only if simulation runs in same thread as UI,
+            in other case use <see cref="T:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener">ProxyMultiThreadListener</see>.	
+            </remarks>	
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyListener.Initialize(System.Collections.ArrayList)">
+            <summary>
+            Initializes this <see cref="T:Oatc.OpenMI.Gui.Core.ProxyListener">ProxyListener</see> to send events to specific listeners.
+            </summary>
+            <param name="listeners">Listeners to recieve events.</param>
+            <remarks>
+            All registered listeners may not change content of the event
+            in theit implementation of <see cref="M:OpenMI.Standard.IListener.OnEvent(OpenMI.Standard.IEvent)">IListener.OnEvent</see> method.
+            See <see cref="M:Oatc.OpenMI.Gui.Core.ProxyListener.OnEvent(OpenMI.Standard.IEvent)">OnEvent</see>, <see cref="T:Oatc.OpenMI.Gui.Core.ProxyListener">ProxyListener</see>
+            for more detail.
+            </remarks>	
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyListener.GetAcceptedEventType(System.Int32)">
+            <summary>
+            Get accepted event type.
+            </summary>
+            <param name="acceptedEventTypeIndex">Index of accepted event type.</param>
+            <returns>Returns accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventType(System.Int32)">IListener.GetAcceptedEventType</see>
+            for more detail.</remarks>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyListener.GetAcceptedEventTypeCount">
+            <summary>
+            Get accepted event type count.
+            </summary>
+            <returns>Returns number of accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventTypeCount">IListener.GetAcceptedEventTypeCount</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyListener.OnEvent(OpenMI.Standard.IEvent)">
+            <summary>
+            Sends this event to all registered listeners.
+            </summary>
+            <param name="Event">Event to send.</param>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.OnEvent(OpenMI.Standard.IEvent)">IListener.OnEvent</see>
+            for more detail.</remarks>		
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener">
+            <summary>
+            Simulation listener used to forward events to other listeners. 
+            Moreover, compared to <see cref="T:Oatc.OpenMI.Gui.Core.ProxyListener">ProxyListener</see>, 
+            it's able to synchronize access to events and resources influed by them
+            between simulation thread and UI thread.
+            </summary>
+            <remarks>
+            This class should be used only if simulation runs in other thread than registered listeners should and if
+            application has a message loop (see <see cref="P:System.Windows.Forms.Application.MessageLoop">Application.MessageLoop</see>).
+            During simulation, if some model generates an event, the simulation thread invokes 
+            <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.OnEvent(OpenMI.Standard.IEvent)">OnEvent</see> method. This method stores events into internal queues.
+            In some interval, timer defined by the user (see <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.Initialize(System.Collections.ArrayList,System.Windows.Forms.Timer,System.Int32)">Initialize</see> method)
+            generates in UI thread an timer-event which processes all events from
+            internal queues using <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.SendEventsToListeners">SendEventsToListeners</see>
+            method.
+            The goal is that <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.OnEvent(OpenMI.Standard.IEvent)">OnEvent</see> method is called from simulation thread,
+            and <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.SendEventsToListeners">SendEventsToListeners</see> from UI thread
+            (ie. the thread with message loop) and access to internal list of events is synchronized
+            between them by mutex.
+            The next goal is that with this mechanism we don't have to use active waiting
+            to determine when simulation finished.
+            If simulation thread would directly call UI-side listeners
+            (for example <see cref="T:Oatc.OpenMI.Gui.Core.ProgressBarListener">ProgressBarListener</see>), the result 
+            will depend on race condition (for example progress-bar could be increased while repainting it).
+            The only issue is that we silently expect that listeners won't change content of the event.
+            </remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.Initialize(System.Collections.ArrayList,System.Windows.Forms.Timer,System.Int32)">
+            <summary>
+            Initializes this instance to send events to specific listeners.
+            </summary>
+            <param name="listeners">Listeners to recieve events.</param>
+            <param name="timer">Timer used to fire sending of events to registered listeners.</param>
+            <param name="timerInterval">Time interval in milliseconds between sending of events to registered listeners.</param>
+            <remarks>
+            All registered listeners may not change content of the event
+            in their implementation of <see cref="M:OpenMI.Standard.IListener.OnEvent(OpenMI.Standard.IEvent)">IListener.OnEvent</see> method.		
+            See <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.OnEvent(OpenMI.Standard.IEvent)">OnEvent</see>, <see cref="T:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener">ProxyMultiThreadListener</see>
+            for more detail.
+            </remarks>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.GetAcceptedEventType(System.Int32)">
+            <summary>
+            Get accepted event type.
+            </summary>
+            <param name="acceptedEventTypeIndex">Index of accepted event type.</param>
+            <returns>Returns accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks><see cref="T:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener">ProxyMultiThreadListener</see>
+            accepts exactly the event types accepted by one of listeners
+            registered with <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.Initialize(System.Collections.ArrayList,System.Windows.Forms.Timer,System.Int32)">Initialize</see> method.
+            See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventType(System.Int32)">IListener.GetAcceptedEventType</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.GetAcceptedEventTypeCount">
+            <summary>
+            Get accepted event type count.
+            </summary>
+            <returns>Returns number of accepted <see cref="T:OpenMI.Standard.EventType">EventType</see>.</returns>
+            <remarks>See <see cref="M:OpenMI.Standard.IListener.GetAcceptedEventTypeCount">IListener.GetAcceptedEventTypeCount</see>
+            for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.OnEvent(OpenMI.Standard.IEvent)">
+            <summary>
+            Method stores copy of the event to internal queues so it later can
+            be send to registered listeners.
+            </summary>
+            <param name="Event">Event to be queued.</param>
+            <remarks>This method is called from thread where events are created (ie. simulation thread).
+            We must make copy of the event for case caller changes it before it's delivered
+            to registered listeners.
+            Call blocks until event can be stored to internal queues.
+            See <see cref="T:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener">ProxyMultiThreadListener</see>,
+            <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.Initialize(System.Collections.ArrayList,System.Windows.Forms.Timer,System.Int32)">Initialize</see> for more detail.
+            </remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.SendEventsToListeners">
+            <summary>
+            This function sends all queued events to listeners registered using
+            <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.Initialize(System.Collections.ArrayList,System.Windows.Forms.Timer,System.Int32)">Initialize</see> method.
+            </summary>
+            <remarks>
+            Events are queued by simulation thread using <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.OnEvent(OpenMI.Standard.IEvent)">OnEvent</see> method.
+            Call this function from thread, where you want registered listeners to work (ie. from UI thread).
+            Calling thread blocks until all registered listeners have done its work.
+            If simulation finished, the timer is disabled to stop calling it's handler.
+            </remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.SendEventsToListenersHandler(System.Object,System.EventArgs)">
+            <summary>
+            Handler used by timer.
+            </summary>
+            <param name="sender">Sender, not used.</param>
+            <param name="e">Event arguments, not used.</param>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.InternalListenerRecord">
+            <summary>
+            Internal record which is hold for each listener registered
+            with <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.Initialize(System.Collections.ArrayList,System.Windows.Forms.Timer,System.Int32)">Initialize</see> method.
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.EventCopy">
+            <summary>
+            Class used to store basic content of any class inherited from <see cref="T:OpenMI.Standard.IEvent">IEvent</see>.
+            </summary>
+            <remarks>
+            This class is used in <see cref="M:Oatc.OpenMI.Gui.Core.ProxyMultiThreadListener.OnEvent(OpenMI.Standard.IEvent)">OnEvent</see>
+            to copy content of received event, because sender can change
+            it's content before it's delivered to registered listeners.
+            The usage of backbone's <see cref="T:Oatc.OpenMI.Sdk.Backbone.Event">Event</see>
+            isn't effective here because it creates new <c>Hashtable</c> everytime it's created.
+            </remarks>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.TriggerExchangeItem">
+            <summary>
+            Dummy exchange item used by trigger's link.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.TriggerExchangeItem.#ctor">
+            <summary>
+            Creates new instance of <see cref="T:Oatc.OpenMI.Gui.Core.TriggerExchangeItem">TriggerExchangeItem</see>
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.TriggerExchangeItem.Quantity">
+            <summary>
+            Gets dummy quantity.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.TriggerExchangeItem.ElementSet">
+            <summary>
+            Gets dummy element-set..
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.Trigger">
+            <summary>
+            Linkable component which can hold only one input link. It's used to fire the simulation.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Oatc.OpenMI.Gui.Core.Trigger">Trigger</see> class.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.GetInputExchangeItem(System.Int32)">
+            <summary>
+            Gets input exchange item.
+            </summary>
+            <param name="inputExchangeItemIndex">Index of input exchange item.</param>
+            <returns>If <c>inputExchangeItemIndex</c> is <c>0</c>, returns
+            the only one available input exchnage item, otherwise returns <c>null</c>.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.GetOutputExchangeItem(System.Int32)">
+            <summary>
+            Default implementation.
+            </summary>
+            <param name="outputExchangeItemIndex"></param>
+            <returns>Returns <c>null</c>.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.AddLink(OpenMI.Standard.ILink)">
+            <summary>
+            Stores input link which is used to trigger the simulation.
+            </summary>
+            <param name="link">Input link.</param>
+            <remarks>Trigger can have only one input link, if you call this method
+            more than once, only the last link is used to trigger the simulation.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.Dispose">
+            <summary>
+            Default implementation.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.GetValues(OpenMI.Standard.ITime,System.String)">
+            <summary>
+            Not implemented.
+            </summary>
+            <param name="time"></param>
+            <param name="linkID"></param>
+            <returns>Returns <c>null</c>.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.Initialize(OpenMI.Standard.IArgument[])">
+            <summary>
+            Default implementation
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.Prepare">
+            <summary>
+            Default implementation.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.RemoveLink(System.String)">
+            <summary>
+            Removes the one link from trigger if IDs are corresponding.
+            </summary>
+            <param name="linkID">Link's ID.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.Validate">
+            <summary>
+            Preforms validation of the <see cref="T:Oatc.OpenMI.Gui.Core.Trigger">Trigger</see> model.
+            </summary>
+            <returns>Returns empty string.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.Finish">
+            <summary>
+            Default implementation.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.SendEvent(OpenMI.Standard.IEvent)">
+            <summary>
+            Default implementation
+            </summary>
+            <param name="Event"></param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.GetPublishedEventTypeCount">
+            <summary>
+            Default implementation.
+            </summary>
+            <returns>Returns <c>0</c>.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.UnSubscribe(OpenMI.Standard.IListener,OpenMI.Standard.EventType)">
+            <summary>
+            Default implementation.
+            </summary>
+            <param name="listener"></param>
+            <param name="eventType"></param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.GetPublishedEventType(System.Int32)">
+            <summary>
+            Default implementation.
+            </summary>
+            <param name="providedEventTypeIndex"></param>
+            <returns>Returns <see cref="F:OpenMI.Standard.EventType.Other">EventType.Other</see>.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.Subscribe(OpenMI.Standard.IListener,OpenMI.Standard.EventType)">
+            <summary>
+            Default implementation.
+            </summary>
+            <param name="listener"></param>
+            <param name="eventType"></param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Trigger.Run(Oatc.OpenMI.Sdk.Backbone.TimeStamp)">
+            <summary>
+            Invokes <see cref="M:OpenMI.Standard.ILinkableComponent.GetValues(OpenMI.Standard.ITime,System.String)">ILinkableComponent.GetValues</see>
+            method on model linked to this trigger, if any.
+            </summary>
+            <param name="runToTime">Time for <see cref="M:OpenMI.Standard.ILinkableComponent.GetValues(OpenMI.Standard.ITime,System.String)">ILinkableComponent.GetValues</see> call.</param>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.Trigger.InputExchangeItemCount">
+            <summary>
+            Gets number of input exchange items, i.e. <c>1</c>.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.Trigger.OutputExchangeItemCount">
+            <summary>
+            Gets output exchange items count, i.e. <c>0</c>.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.Trigger.ComponentDescription">
+            <summary>
+            Gets description of trigger.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.Trigger.TimeHorizon">
+            <summary>
+            Gets trigger's time horizon.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.Trigger.EarliestInputTime">
+            <summary>
+            Gets earliest time when next input is needed, typically the trigger invoke time.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.Trigger.ComponentID">
+            <summary>
+            Gets this component's ID, i.e. <see cref="F:Oatc.OpenMI.Gui.Core.CompositionManager.TriggerModelID">CompositionManager.TriggerModelID</see> constant.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.Trigger.ModelDescription">
+            <summary>
+            Gets model description.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.Trigger.ModelID">
+            <summary>
+            Gets this model's ID, i.e. <see cref="F:Oatc.OpenMI.Gui.Core.CompositionManager.TriggerModelID">CompositionManager.TriggerModelID</see> constant.
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.UIConnection">
+            <summary>
+            This class describes connection between two OpenMI models in one direction,
+            which consists of many links in same direction.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIConnection.#ctor(Oatc.OpenMI.Gui.Core.UIModel,Oatc.OpenMI.Gui.Core.UIModel)">
+            <summary>
+            Creates a new instance of <see cref="T:Oatc.OpenMI.Gui.Core.UIConnection">UIConnection</see> class.
+            </summary>
+            <param name="providingModel">Model providing data.</param>
+            <param name="acceptingModel">Model accepting data.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIConnection.Draw(System.Drawing.Point,System.Drawing.Graphics)">
+            <summary>
+            Draw connection (i.e. line with triangle) to specific graphics object.
+            </summary>
+            <param name="windowPosition">Position of window described by graphics object in composition area.</param>
+            <param name="g">Graphics where connection should be drawn.</param>		
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIConnection.IsOnConnectionLine(System.Drawing.Point)">
+            <summary>
+            Determines, whether point is on connection line, i.e. in the triangle.
+            </summary>
+            <param name="point">Point</param>
+            <returns>Returns <c>true</c> if point is inside the triangle, otherwise returns <c>false</c>.</returns>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.UIConnection.ProvidingModel">
+            <summary>
+            Gets providing model.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.UIConnection.AcceptingModel">
+            <summary>
+            Gets accepting model.
+            </summary>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.UIConnection.Links">
+            <summary>
+            Gets list of all links in this connection.
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.UIModel">
+            <summary>
+            Summary description for Model.
+            </summary>
+        </member>
+        <member name="F:Oatc.OpenMI.Gui.Core.UIModel._isMoving">
+            <summary>
+            <c>true</c> if user is moving the model rectangle on the screen
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIModel.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Oatc.OpenMI.Gui.Core.UIModel">UIModel</see> class.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIModel.NewTrigger">
+            <summary>
+            Creates a new instance of trigger model.
+            </summary>
+            <returns>Returns trigger model.</returns>
+            <remarks>See <see cref="T:Oatc.OpenMI.Gui.Core.Trigger">Trigger</see> for more detail.</remarks>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIModel.Draw(System.Drawing.Point,System.Drawing.Graphics)">
+            <summary>
+            Draws this model's rectangle into specified <see cref="T:System.Drawing.Graphics">Graphics</see> object.
+            </summary>
+            <param name="displacement">Displacement of composition box in whole composition area.</param>
+            <param name="g"><see cref="T:System.Drawing.Graphics">Graphics</see> where rectangle should be drawn.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIModel.GetMidPoint">
+            <summary>
+            Gets middle point of model's rectangle.
+            </summary>
+            <returns>Returns middle point of model's rectangle.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIModel.IsPointInside(System.Drawing.Point)">
+            <summary>
+            Determines whether point is in model's rectangle.
+            </summary>
+            <param name="point">Point</param>
+            <returns>Returns <c>true</c> if the point is in model's rectangle, otherwise returns <c>false</c>.</returns>
+        </member>
+        <member name="F:Oatc.OpenMI.Gui.Core.UIModel.Rect">
+            <summary>
+            Model's rectangle.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.UIModel.ReadOMIFile(System.String,System.String)">
+            <summary>
+            Sets this model according to OMI file.
+            </summary>
+            <param name="filename">Relative or absolute path to OMI file describing the model.</param>
+            <param name="relativeDirectory">Directory <c>filename</c> is relative to, or <c>null</c> if <c>filename</c> is absolute or relative to current directory.</param>
+            <remarks>See <see cref="M:Oatc.OpenMI.Gui.Core.Utils.GetFileInfo(System.String,System.String)">Utils.GetFileInfo</see> for more info about how
+            specified file is searched.</remarks>	
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.UIModel.OmiFilename">
+            <summary>
+            Gets or sets path to OMI file representing this model.
+            </summary>
+            <remarks>Setting of this property has only sense in case this model is trigger, see
+            <see cref="M:Oatc.OpenMI.Gui.Core.UIModel.NewTrigger">NewTrigger</see> method.</remarks>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.UIModel.ModelID">
+            <summary>
+            Gets ID of this model.
+            </summary>
+            <remarks>ID is equivalent to <see cref="P:OpenMI.Standard.ILinkableComponent.ModelID">ILinkableComponent.ModelID</see>.
+            It must be unique in the composition.
+            </remarks>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.UIModel.IsMoving">
+            <summary>
+            Gets or sets whether model's rectangle is currently moving.
+            </summary>
+            <remarks>
+            It's useful for example to draw moving rectangles with different color.
+            </remarks>
+        </member>
+        <member name="P:Oatc.OpenMI.Gui.Core.UIModel.LinkableComponent">
+            <summary>
+            Linkable component corresponding to this model.
+            </summary>
+        </member>
+        <member name="T:Oatc.OpenMI.Gui.Core.Utils">
+            <summary>
+            Class contains support methods.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Utils.CompareDimensions(OpenMI.Standard.IDimension,OpenMI.Standard.IDimension)">
+            <summary>
+            Determines whether two dimensions are equal.
+            </summary>
+            <param name="dimension1">Dimension one</param>
+            <param name="dimension2">Dimension two</param>
+            <returns>Returns <c>true</c> if powers of all dimension bases are same, otherwise returns <c>false</c>.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Utils.GetFileInfo(System.String,System.String)">
+            <summary>
+            Gets <c>FileInfo</c> of file specified by it's (eventually relative) path.
+            </summary>
+            <param name="relativeDir">Directory <c>filename</c> is relative to, or <c>null</c> if <c>filename</c> is absolute path or relative path to current directory.</param>
+            <param name="filename">Relative or absolute path to file.</param>
+            <returns>Returns <c>FileInfo</c> of file specified.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Utils.EventToString(OpenMI.Standard.IEvent)">
+            <summary>
+            Converts event to <c>string</c> representation.
+            </summary>
+            <param name="Event">Event to be converted to <c>string</c></param>
+            <returns>Returns resulting <c>string</c>.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Utils.RegisterFileExtensions(System.String)">
+            <summary>
+            Registers OPR and OMI file extension in Win32 registry to be opened with specific OmiEd application.
+            </summary>
+            <param name="applicationPath">Full path to specific OmiEd application executable.</param>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Utils.AreFileExtensionsRegistered(System.String)">
+            <summary>
+            Determines whether OPR and OMI file extension are registered in Win32 registry
+            to be opened with specific OmiEd application.
+            </summary>
+            <param name="applicationPath">Path to specific OmiEd application executable.</param>
+            <returns>If OPR and OMI extensions are correctly registered, returns <c>true</c>,
+            otherwise returns <c>false</c>.</returns>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Utils.UnregisterFileExtensions">
+            <summary>
+            Discards any OPR and OMI file extension registration from Win32 registry.
+            </summary>
+        </member>
+        <member name="M:Oatc.OpenMI.Gui.Core.Utils.ResetFPU">
+            <summary>
+            Resets floating point unit (FPU).
+            </summary>
+        </member>
+    </members>
+</doc>

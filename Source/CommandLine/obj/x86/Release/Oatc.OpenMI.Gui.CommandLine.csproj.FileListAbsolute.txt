@@ -1,0 +1,9 @@
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\bin\x86\Release\Oatc.OpenMI.Gui.CommandLine.exe.config
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\bin\x86\Release\Oatc.OpenMI.Gui.CommandLine.exe
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\bin\x86\Release\Oatc.OpenMI.Gui.xml
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\bin\x86\Release\Oatc.OpenMI.Gui.Core.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\bin\x86\Release\OpenMI.Standard.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\bin\x86\Release\Oatc.OpenMI.Sdk.Backbone.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\bin\x86\Release\Oatc.OpenMI.Sdk.DevelopmentSupport.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\obj\x86\Release\Oatc.OpenMI.Gui.CommandLine.csprojResolveAssemblyReference.cache
+C:\Users\Tom\Documents\Research\ConfigEd\Source\CommandLine\obj\x86\Release\Oatc.OpenMI.Gui.CommandLine.exe

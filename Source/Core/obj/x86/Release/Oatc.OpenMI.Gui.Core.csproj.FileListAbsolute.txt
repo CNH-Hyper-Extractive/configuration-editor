@@ -1,0 +1,8 @@
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Core\bin\x86\Release\Oatc.OpenMI.Gui.Core.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Core\bin\x86\Release\org.OpenMI.Tools.GUI.Core.XML
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Core\bin\x86\Release\Oatc.OpenMI.Sdk.Backbone.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Core\bin\x86\Release\Oatc.OpenMI.Sdk.DevelopmentSupport.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Core\bin\x86\Release\Oatc.OpenMI.Sdk.Spatial.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Core\bin\x86\Release\OpenMI.Standard.dll
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Core\obj\x86\Release\Oatc.OpenMI.Gui.Core.csprojResolveAssemblyReference.cache
+C:\Users\Tom\Documents\Research\ConfigEd\Source\Core\obj\x86\Release\Oatc.OpenMI.Gui.Core.dll
