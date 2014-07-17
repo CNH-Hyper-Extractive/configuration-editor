@@ -1,0 +1,12 @@
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\OpenMI.CommandLine.exe.config
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\OpenMI.CommandLine.exe
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\OpenMI.CommandLine.pdb
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\Oatc.OpenMI.Gui.Core.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\Oatc.OpenMI.Sdk.Spatial.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\OpenMI.Standard.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\Oatc.OpenMI.Sdk.Backbone.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\Oatc.OpenMI.Sdk.DevelopmentSupport.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\bin\x86\Debug\Oatc.OpenMI.Gui.Core.pdb
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\obj\x86\Debug\Oatc.OpenMI.Gui.CommandLine.csprojResolveAssemblyReference.cache
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\obj\x86\Debug\OpenMI.CommandLine.exe
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\CommandLine\obj\x86\Debug\OpenMI.CommandLine.pdb

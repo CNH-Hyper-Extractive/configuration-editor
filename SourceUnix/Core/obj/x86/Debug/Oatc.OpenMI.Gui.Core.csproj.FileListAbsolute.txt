@@ -1,0 +1,8 @@
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\Core\bin\x86\Debug\Oatc.OpenMI.Gui.Core.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\Core\bin\x86\Debug\Oatc.OpenMI.Gui.Core.pdb
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\Core\bin\x86\Debug\Oatc.OpenMI.Sdk.Backbone.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\Core\bin\x86\Debug\Oatc.OpenMI.Sdk.DevelopmentSupport.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\Core\bin\x86\Debug\OpenMI.Standard.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\Core\obj\x86\Debug\Oatc.OpenMI.Gui.Core.dll
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\Core\obj\x86\Debug\Oatc.OpenMI.Gui.Core.pdb
+C:\Users\Tom\Documents\GitHub\configuration-editor\SourceUnix\Core\obj\x86\Debug\Oatc.OpenMI.Gui.Core.csprojResolveAssemblyReference.cache

@@ -61,7 +61,7 @@ namespace Oatc.OpenMI.Gui.CommandLine
 
 		public static void ProceedCommandLineArgs(string[] args)
 		{
-			bool mta = false;
+			//bool mta = false;
 			bool verboseOff = false;
 			string oprFilename = null;
 
@@ -87,10 +87,10 @@ namespace Oatc.OpenMI.Gui.CommandLine
 						i++;						
 						break;
 
-					case "-mta":
-					case "/mta":
-						mta = true;
-						break;
+					//case "-mta":
+					//case "/mta":
+					//	mta = true;
+					//	break;
 
 					case "-help":
 					case "/help":
@@ -114,15 +114,17 @@ namespace Oatc.OpenMI.Gui.CommandLine
 			// In VS2005 the main thread uses MTA by default, so we have to create new thread,
 			// which will run the application, and set it's appartment state before it's started
 
-			Thread thread = new Thread( new ParameterizedThreadStart( RunApplication ) );			
+			//Thread thread = new Thread( new ParameterizedThreadStart( RunApplication ) );			
 
-			if( mta )
-				thread.SetApartmentState( ApartmentState.MTA );
-			else
-				thread.SetApartmentState( ApartmentState.STA );
+			//if( mta )
+			//	thread.SetApartmentState( ApartmentState.MTA );
+			//else
+			//	thread.SetApartmentState( ApartmentState.STA );
 
-			thread.Start( new object[] { verboseOff, oprFilename } );
-			thread.Join();
+			//thread.Start( new object[] { verboseOff, oprFilename } );
+			//thread.Join();
+
+            RunApplication(new object[] { verboseOff, oprFilename });
 		}
 
 		private static void RunApplication( object data )

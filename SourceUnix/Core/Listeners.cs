@@ -168,6 +168,7 @@ namespace Oatc.OpenMI.Gui.Core
 	/// <summary>
 	/// Listener used to write events to console.
 	/// </summary>
+	/// 
 	public class ConsoleListener: IListener
 	{
 		EventType[] _acceptedEventTypes;
@@ -246,10 +247,7 @@ namespace Oatc.OpenMI.Gui.Core
 		}
 		
 	}
-
-
 	
-
 
 	/// <summary>
 	/// Simulation listener used to forward events to other listeners. 
